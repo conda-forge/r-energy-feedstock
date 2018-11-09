@@ -1,5 +1,4 @@
-{% set version = "1.7-5" %}
-
+{% set version = '1.7-5' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,40 +7,44 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: energy_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/energy_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/energy/energy_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/energy_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/energy/energy_{{ version }}.tar.gz
   sha256: 24c2cf080939f8f56cd9cda06d2dfc30d0389cd3ec7250af4f9a09a4c06b6996
 
 build:
   merge_build_host: True  # [win]
-  number: 0
+  number: 1
+  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
-  skip: true  # [win32]
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [unix]
-    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('cxx') }}      # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed  # [win]
+    - {{posix}}coreutils  # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-    - r-rcpp
+    - r-rcpp >=0.12.6
     - r-boot
-
   run:
     - r-base
-    - r-rcpp
+    - {{native}}gcc-libs         # [win]
+    - r-rcpp >=0.12.6
     - r-boot
 
 test:
   commands:
-    - $R -e "library('energy')"  # [not win]
+    - $R -e "library('energy')"           # [not win]
     - "\"%R%\" -e \"library('energy')\""  # [win]
 
 about:
@@ -51,17 +54,18 @@ about:
     including distance correlation, one-sample, two-sample, and multi-sample tests for
     comparing multivariate distributions, are implemented. Measuring and testing multivariate
     independence based on distance correlation, partial distance correlation, multivariate
-    goodness-of-fit tests, clustering based on energy distance, testing for multivariate
-    normality, distance components (disco) for non-parametric analysis of structured
-    data, and other energy statistics/methods are implemented.
+    goodness-of-fit tests, k-groups and hierarchical clustering based on energy distance,
+    testing for multivariate normality, distance components (disco) for non-parametric analysis
+    of structured data, and other energy statistics/methods are implemented.
   license_family: GPL3
   license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
   license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
-    - cbrueffer
     - johanneskoester
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
