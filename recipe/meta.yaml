@@ -1,4 +1,4 @@
-{% set version = '1.7-5' %}
+{% set version = '1.7-6' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,26 +10,23 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/energy_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/energy/energy_{{ version }}.tar.gz
-  sha256: 24c2cf080939f8f56cd9cda06d2dfc30d0389cd3ec7250af4f9a09a4c06b6996
+  sha256: 900edbb28e1f1bccd78580828470628cf75eb6333b63e1a58e4da7fc5c5fa89a
 
 build:
   merge_build_host: True  # [win]
-  number: 1002
-  skip: true  # [win32]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('m2w64_cxx') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
-    - {{posix}}sed  # [win]
-    - {{posix}}coreutils  # [win]
     - {{posix}}sed               # [win]
     - {{posix}}coreutils         # [win]
     - {{posix}}zip               # [win]
@@ -50,23 +47,37 @@ test:
 
 about:
   home: https://github.com/mariarizzo/energy
-  license: GPL (>= 2)
+  license: GPL-2
   summary: E-statistics (energy) tests and statistics for multivariate and univariate inference,
     including distance correlation, one-sample, two-sample, and multi-sample tests for
     comparing multivariate distributions, are implemented. Measuring and testing multivariate
     independence based on distance correlation, partial distance correlation, multivariate
-    goodness-of-fit tests, k-groups and hierarchical clustering based on energy distance,
-    testing for multivariate normality, distance components (disco) for non-parametric analysis
+    goodness-of-fit tests, k-groups and hierarchical clustering based on energy  distance,
+    testing for multivariate normality, distance components (disco) for non-parametric  analysis
     of structured data, and other energy statistics/methods are implemented.
-  license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_family: GPL2
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
+
+# Package: energy
+# Title: E-Statistics: Multivariate Inference via the Energy of Data
+# Version: 1.7-6
+# Date: 2019-07-04
+# Authors@R: c( person("Maria", "Rizzo", , "mrizzo@bgsu.edu", c("aut", "cre")), person("Gabor", "Szekely", , , "aut"))
+# Description: E-statistics (energy) tests and statistics for multivariate and univariate inference, including distance correlation, one-sample, two-sample, and multi-sample tests for comparing multivariate distributions, are implemented. Measuring and testing multivariate independence based on distance correlation, partial distance correlation, multivariate goodness-of-fit tests, k-groups and hierarchical clustering based on energy  distance, testing for multivariate normality, distance components (disco) for non-parametric  analysis of structured data, and other energy statistics/methods are implemented.
+# Imports: Rcpp (>= 0.12.6), stats, boot
+# LinkingTo: Rcpp
+# Suggests: MASS, CompQuadForm
+# Depends: R (>= 2.10)
+# URL: https://github.com/mariarizzo/energy
+# License: GPL (>= 2)
+# NeedsCompilation: yes
+# Repository: CRAN
+# Packaged: 2019-07-05 23:21:29 UTC; maria
+# Author: Maria Rizzo [aut, cre], Gabor Szekely [aut]
+# Maintainer: Maria Rizzo <mrizzo@bgsu.edu>
+# Date/Publication: 2019-07-06 15:40:03 UTC
