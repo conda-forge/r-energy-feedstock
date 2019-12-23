@@ -1,4 +1,4 @@
-{% set version = '1.7-6' %}
+{% set version = "1.7-7" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/energy_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/energy/energy_{{ version }}.tar.gz
-  sha256: 900edbb28e1f1bccd78580828470628cf75eb6333b63e1a58e4da7fc5c5fa89a
+  sha256: 67b88fb33ee6e7bec2e4fe356a4efd36f70c3cf9b0ebe2f6d9da9ec96de9968f
 
 build:
   merge_build_host: True  # [win]
