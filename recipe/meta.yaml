@@ -1,4 +1,4 @@
-{% set version = "1.7-7" %}
+{% set version = "1.7-8" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/energy_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/energy/energy_{{ version }}.tar.gz
-  sha256: 67b88fb33ee6e7bec2e4fe356a4efd36f70c3cf9b0ebe2f6d9da9ec96de9968f
+  sha256: de08e8de037bb30068bbf0c1880b153a586d342304681f4ba103ab808c7f4789
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -34,11 +34,13 @@ requirements:
     - r-base
     - r-rcpp >=0.12.6
     - r-boot
+    - r-gsl
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.6
     - r-boot
+    - r-gsl
 
 test:
   commands:
@@ -47,17 +49,12 @@ test:
 
 about:
   home: https://github.com/mariarizzo/energy
-  license: GPL-2
-  summary: E-statistics (energy) tests and statistics for multivariate and univariate inference,
-    including distance correlation, one-sample, two-sample, and multi-sample tests for
-    comparing multivariate distributions, are implemented. Measuring and testing multivariate
-    independence based on distance correlation, partial distance correlation, multivariate
-    goodness-of-fit tests, k-groups and hierarchical clustering based on energy  distance,
-    testing for multivariate normality, distance components (disco) for non-parametric  analysis
-    of structured data, and other energy statistics/methods are implemented.
+  license: GPL-2.0-or-later
+  summary: E-statistics (energy) tests and statistics for multivariate and univariate inference, including distance correlation, one-sample, two-sample, and multi-sample tests for comparing multivariate distributions, are implemented. Measuring and testing multivariate independence based on distance correlation, partial
+    distance correlation, multivariate goodness-of-fit tests, k-groups and hierarchical clustering based on energy  distance, testing for multivariate normality, distance components (disco) for non-parametric  analysis of structured data, and other energy statistics/methods are implemented.
   license_family: GPL2
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
