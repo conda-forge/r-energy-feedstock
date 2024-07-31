@@ -3,6 +3,7 @@ About r-energy-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-energy-feedstock/blob/main/LICENSE.txt)
 
+
 About r-energy
 --------------
 
@@ -11,6 +12,7 @@ Home: https://github.com/mariarizzo/energy
 Package license: GPL-2.0-or-later
 
 Summary: E-statistics (energy) tests and statistics for multivariate and univariate inference, including distance correlation, one-sample, two-sample, and multi-sample tests for comparing multivariate distributions, are implemented. Measuring and testing multivariate independence based on distance correlation, partial distance correlation, multivariate goodness-of-fit tests, k-groups and hierarchical clustering based on energy  distance, testing for multivariate normality, distance components (disco) for non-parametric  analysis of structured data, and other energy statistics/methods are implemented.
+
 About r-energy
 --------------
 
@@ -38,13 +40,6 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_r_base4.2</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1109&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-energy-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_r_base4.2" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
               <td>linux_64_r_base4.3</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1109&branchName=main">
@@ -52,10 +47,10 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_r_base4.2</td>
+              <td>linux_64_r_base4.4</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1109&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-energy-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_r_base4.2" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-energy-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_r_base4.4" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -66,10 +61,24 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64</td>
+              <td>osx_64_r_base4.4</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1109&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-energy-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-energy-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_r_base4.4" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_r_base4.3</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1109&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-energy-feedstock?branchName=main&jobName=win&configuration=win%20win_64_r_base4.3" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_r_base4.4</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1109&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-energy-feedstock?branchName=main&jobName=win&configuration=win%20win_64_r_base4.4" alt="variant">
                 </a>
               </td>
             </tr>
@@ -153,7 +162,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
